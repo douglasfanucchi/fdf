@@ -17,11 +17,16 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <fcntl.h>
+# include <libft.h>
+# include <stdio.h>
+# include <time.h>
 
-typedef struct s_map_array {
-	size_t	row;
-	size_t	column;
-	size_t	deepth;
-}	t_map_array;
+typedef struct s_map_item {
+	char	*color;
+	int		deepth;
+}	t_map_item;
+
+
+t_list	**get_map_array(char *filename);
 
 #endif
