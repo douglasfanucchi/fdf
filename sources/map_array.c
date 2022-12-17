@@ -56,7 +56,6 @@ static t_list	**map_parser(int fd)
 {
 	t_list		**map_array;
 	t_list		**map_columns;
-	t_map_item	*map_item;
 	char		*line;
 
 	map_array = malloc(sizeof(t_list **));
