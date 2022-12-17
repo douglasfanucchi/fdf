@@ -1,0 +1,5 @@
+fdf
+*.o
+*.a
+*.out
+.vscode/
