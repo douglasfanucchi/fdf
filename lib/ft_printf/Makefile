@@ -1,7 +1,7 @@
 NAME=libftprintf.a
 TESTS=test.out
 CC=clang
-CC_FLAGS=-Wall -Wextra -Werror
+CC_FLAGS=-Wall -Wextra -Werror -fPIE
 INCLUDES= -I ./includes -I libft
 LIBFT=./libft/libft.a
 SOURCES_FORMATS = get_char_format.c \
