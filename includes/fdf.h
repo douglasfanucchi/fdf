@@ -29,7 +29,7 @@ typedef struct s_map_item {
 typedef struct s_point {
 	int	x;
 	int	y;
-	int color;
+	int	color;
 }	t_point;
 
 typedef struct s_img_data {
