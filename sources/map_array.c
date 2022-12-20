@@ -21,7 +21,7 @@ static t_map_item	*new_map_item(char *item_info)
 	if (!item)
 		return (NULL);
 	info_splitted = ft_split(item_info, ',');
-	item->deepth = ft_atoi(info_splitted[0]);
+	item->height = ft_atoi(info_splitted[0]);
 	item->color = NULL;
 	if (info_splitted[1])
 		item->color = info_splitted[1];
