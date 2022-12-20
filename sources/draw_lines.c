@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_lines.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: douglasfanucchi <douglasfanucchi@studen    +#+  +:+       +#+        */
+/*   By: dfanucch <dfanucch@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/19 22:33:37 by douglasfanu       #+#    #+#             */
-/*   Updated: 2022/12/19 22:48:41 by douglasfanu      ###   ########.fr       */
+/*   Created: 2022/12/19 22:52:56 by dfanucch          #+#    #+#             */
+/*   Updated: 2022/12/19 22:52:57 by dfanucch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,18 +87,4 @@ void	mlx_draw_line(t_img_data *data, t_point p1, t_point p2, int color)
 		mlx_draw_line_high(data, p1, p2, color);
 	else
 		mlx_draw_line_low(data, p1, p2, color);
-}
-
-t_point	*rotate(int x, int y, int z)
-{
-	t_point	*point;
-	double	angle;
-
-	point = malloc(sizeof(t_point));
-	angle = 45 * M_PI / 180;
-	point->x = cos(angle) * x - sin(angle) * y;
-	point->y = sin(angle) * x + cos(angle) * y;
-	angle = atan(M_SQRT2);
-	point->y = cos(angle) * point->y - sin(angle) * z;
-	return (point);
 }
