@@ -12,7 +12,7 @@
 
 #include <fdf.h>
 
-void	mlx_draw_line_low(t_img_data *data, t_point p1, t_point p2, int color)
+static void	mlx_draw_line_low(t_img_data *data, t_point p1, t_point p2)
 {
 	int	dy;
 	int	dx;
@@ -30,7 +30,7 @@ void	mlx_draw_line_low(t_img_data *data, t_point p1, t_point p2, int color)
 	}
 	while (p1.x <= p2.x)
 	{
-		mlx_put_pixel_img(data, p1.x++, p1.y, color);
+		mlx_put_pixel_img(data, p1.x++, p1.y, p1.color);
 		e += 2 * dy;
 		if (e >= 2 * dx)
 		{
@@ -40,7 +40,7 @@ void	mlx_draw_line_low(t_img_data *data, t_point p1, t_point p2, int color)
 	}
 }
 
-void	mlx_draw_line_high(t_img_data *data, t_point p1, t_point p2, int color)
+static void	mlx_draw_line_high(t_img_data *data, t_point p1, t_point p2)
 {
 	int	dx;
 	int	dy;
@@ -58,7 +58,7 @@ void	mlx_draw_line_high(t_img_data *data, t_point p1, t_point p2, int color)
 	}
 	while (p1.y != p2.y)
 	{
-		mlx_put_pixel_img(data, p1.x, p1.y, color);
+		mlx_put_pixel_img(data, p1.x, p1.y, p1.color);
 		p1.y += step;
 		e += 2 * dx;
 		if (e >= 2 * dy)
@@ -69,7 +69,7 @@ void	mlx_draw_line_high(t_img_data *data, t_point p1, t_point p2, int color)
 	}
 }
 
-void	mlx_draw_line(t_img_data *data, t_point p1, t_point p2, int color)
+void	mlx_draw_line(t_img_data *data, t_point p1, t_point p2)
 {
 	int		dy;
 	int		dx;
@@ -84,7 +84,7 @@ void	mlx_draw_line(t_img_data *data, t_point p1, t_point p2, int color)
 	dy = p2.y - p1.y;
 	dx = p2.x - p1.x;
 	if (abs(dy) > abs(dx))
-		mlx_draw_line_high(data, p1, p2, color);
+		mlx_draw_line_high(data, p1, p2);
 	else
-		mlx_draw_line_low(data, p1, p2, color);
+		mlx_draw_line_low(data, p1, p2);
 }
