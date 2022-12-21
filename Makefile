@@ -1,6 +1,6 @@
 NAME=fdf
 CC=gcc
-FILES=fdf map_array draw_lines transformation point
+FILES=fdf map_array draw_lines transformation point cartesian_map_array
 SRC := $(addsuffix .c, $(FILES))
 SRC := $(addprefix sources/, $(SRC))
 OBJS = $(addsuffix .o, $(FILES))

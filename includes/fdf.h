@@ -20,11 +20,24 @@
 # include <libft.h>
 # include <ft_printf.h>
 # include <math.h>
+# define WIN_WIDTH 1200
+# define WIN_HEIGHT 600
 
 typedef struct s_map_item {
 	char	*color;
 	int		height;
 }	t_map_item;
+
+typedef struct s_cartesian_map {
+	int		x_min;
+	int		x_max;
+	int		y_min;
+	int		y_max;
+	int		width;
+	int		height;
+	int		scale;
+	t_list	**rows;
+}	t_cartesian_map;
 
 typedef struct s_point {
 	int	x;
@@ -40,11 +53,12 @@ typedef struct s_img_data {
 	int		endian;
 }	t_img_data;
 
-t_list	**get_map_array(char *filename);
-void	mlx_put_pixel_img(t_img_data *data, int x, int y, int color);
-void	mlx_draw_line(t_img_data *data, t_point p1, t_point p2);
-t_point	*new_point(int x, int y, int color);
-void	del_point(t_point *point);
-void	isometric_projection(t_point *point, int height);
+t_list			**get_map_array(char *filename);
+void			mlx_put_pixel_img(t_img_data *data, int x, int y, int color);
+void			mlx_draw_line(t_img_data *data, t_point p1, t_point p2);
+t_point			*new_point(int x, int y, int color);
+void			del_point(t_point *point);
+void			isometric_projection(t_point *point, int height);
+t_cartesian_map	*new_cartesian_map(t_list *row, int scale);
 
 #endif
