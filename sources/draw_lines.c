@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   draw_lines.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dfanucch <dfanucch@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: dfanucch <dfanucch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 22:52:56 by dfanucch          #+#    #+#             */
-/*   Updated: 2022/12/19 22:52:57 by dfanucch         ###   ########.fr       */
+/*   Updated: 2022/12/21 16:22:54 by dfanucch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fdf.h>
 
-static void	mlx_draw_line_low(t_img_data *data, t_point p1, t_point p2)
+static void	mlx_draw_line_low(t_data *data, t_point p1, t_point p2)
 {
 	int	dy;
 	int	dx;
@@ -40,7 +40,7 @@ static void	mlx_draw_line_low(t_img_data *data, t_point p1, t_point p2)
 	}
 }
 
-static void	mlx_draw_line_high(t_img_data *data, t_point p1, t_point p2)
+static void	mlx_draw_line_high(t_data *data, t_point p1, t_point p2)
 {
 	int	dx;
 	int	dy;
@@ -69,7 +69,7 @@ static void	mlx_draw_line_high(t_img_data *data, t_point p1, t_point p2)
 	}
 }
 
-void	mlx_draw_line(t_img_data *data, t_point p1, t_point p2)
+void	mlx_draw_line(t_data *data, t_point p1, t_point p2)
 {
 	int		dy;
 	int		dx;
