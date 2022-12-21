@@ -38,6 +38,7 @@ FUNCS = ft_isalpha \
 		ft_putstr \
 		get_next_line \
 		ft_newlist \
+		ft_atohex \
 
 SRCS = $(addsuffix .c, $(FUNCS))
 OBJECTS = $(addsuffix .o, $(FUNCS))
