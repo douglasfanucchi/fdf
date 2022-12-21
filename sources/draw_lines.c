@@ -6,11 +6,21 @@
 /*   By: dfanucch <dfanucch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 22:52:56 by dfanucch          #+#    #+#             */
-/*   Updated: 2022/12/21 16:22:54 by dfanucch         ###   ########.fr       */
+/*   Updated: 2022/12/21 17:28:28 by dfanucch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fdf.h>
+
+static void	mlx_put_pixel_img(t_data *data, int x, int y, int color)
+{
+	char	*dst;
+
+	if (x > WIN_WIDTH || x < 0 || y > WIN_HEIGHT || y < 0)
+		return;
+	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
+	*(unsigned int*)dst = color;
+}
 
 static void	mlx_draw_line_low(t_data *data, t_point p1, t_point p2)
 {

@@ -6,7 +6,7 @@
 /*   By: dfanucch <dfanucch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 10:14:50 by dfanucch          #+#    #+#             */
-/*   Updated: 2022/12/21 17:06:35 by dfanucch         ###   ########.fr       */
+/*   Updated: 2022/12/21 17:28:13 by dfanucch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ typedef struct s_data {
 }	t_data;
 
 t_list			**get_map_array(char *filename);
-void			mlx_put_pixel_img(t_data *data, int x, int y, int color);
 void			mlx_draw_line(t_data *data, t_point p1, t_point p2);
 t_point			*new_point(int x, int y, int color);
 void			del_point(t_point *point);
