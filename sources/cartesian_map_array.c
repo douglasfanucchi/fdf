@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cartesian_map_array.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dfanucch <dfanucch@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: dfanucch <dfanucch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 13:36:25 by dfanucch          #+#    #+#             */
-/*   Updated: 2022/12/20 13:36:25 by dfanucch         ###   ########.fr       */
+/*   Updated: 2022/12/21 14:33:51 by dfanucch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,17 @@ static t_list	**get_cartesian_cols(t_list *col, t_cartesian_map *map, int y)
 	t_map_item	*item;
 	int			x;
 	t_point		*point;
+	int			color;
 
+	color = 0x0FFFFFF;
 	x = 0;
 	cartesian_cols = ft_newlist();
 	while (col)
 	{
 		item = (t_map_item *)col->content;
-		point = new_point(x, y, 0x0FF00FF);
+		if (item->color)
+			color = ft_atohex(item->color);
+		point = new_point(x, y, color);
 		point->x *= map->scale;
 		point->y *= map->scale;
 		isometric_projection(point, item->height);
