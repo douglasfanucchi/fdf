@@ -18,7 +18,8 @@ int	mlx_close_window(void *my_data)
 
 	data = my_data;
 	mlx_destroy_window(data->mlx, data->window);
-	return (1);
+	mlx_loop_end(data->mlx);
+	exit(0);
 }
 
 int	mlx_handle_key_press(int keycode, void *my_data)
