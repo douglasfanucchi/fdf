@@ -17,9 +17,9 @@ static void	mlx_put_pixel_img(t_data *data, int x, int y, int color)
 	char	*dst;
 
 	if (x > WIN_WIDTH || x < 0 || y > WIN_HEIGHT || y < 0)
-		return;
+		return ;
 	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
-	*(unsigned int*)dst = color;
+	*(unsigned int *)dst = color;
 }
 
 static void	mlx_draw_line_low(t_data *data, t_point p1, t_point p2)
