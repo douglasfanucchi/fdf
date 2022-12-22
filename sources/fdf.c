@@ -1,50 +1,30 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fdf.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dfanucch <dfanucch@student.42sp.org.br>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/22 11:46:36 by dfanucch          #+#    #+#             */
+/*   Updated: 2022/12/22 11:46:36 by dfanucch         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <fdf.h>
-#include <mlx.h>
 
-void	mlx_put_pixel_img(t_img_data *data, int x, int y, int color)
+int	main(int argc, char **argv)
 {
-	char	*dst;
+	t_data	data;
 
-	if (x > 1200 || x < 0 || y > 600 || y < 0)
-		return;
-	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
-	*(unsigned int*)dst = color;
-}
-
-int	main()
-{
-	void	*mlx;
-	void	*window;
-	t_img_data	img_data;
-
-	mlx = mlx_init();
-	window = mlx_new_window(mlx, WIN_WIDTH, WIN_HEIGHT, "FDF");
-	img_data.img = mlx_new_image(mlx, WIN_WIDTH, WIN_HEIGHT);
-	img_data.addr = mlx_get_data_addr(img_data.img, &img_data.bits_per_pixel,
-						&img_data.line_length, &img_data.endian);
-	t_cartesian_map	*map = new_cartesian_map(*get_map_array("maps/42.fdf"), 50);
-	t_list	*row = *map->rows;
-	while (row)
+	if (argc != 2)
 	{
-		t_list	*col = *((t_list **)row->content);
-		t_list	*down_column = NULL;
-		if (row->next)
-			down_column = *((t_list **)row->next->content);
-		while (col)
-		{
-			t_point	*point = (t_point *)col->content;
-			if (col->next)
-				mlx_draw_line(&img_data, *point, *((t_point *)col->next->content));
-			if (down_column)
-			{
-				mlx_draw_line(&img_data, *point, *((t_point *)down_column->content));
-				down_column = down_column->next;
-			}
-			col = col->next;
-		}
-		row = row->next;
+		ft_printf("Error: Invalid parameters.\n");
+		return (1);
 	}
-
-	mlx_put_image_to_window(mlx, window, img_data.img, 0, 0);
-	mlx_loop(mlx);
+	data.mlx = mlx_init();
+	data.window = mlx_new_window(data.mlx, WIN_WIDTH, WIN_HEIGHT, "FDF");
+	data.map_name = argv[1];
+	register_hooks(&data);
+	mlx_loop(data.mlx);
+	return (0);
 }

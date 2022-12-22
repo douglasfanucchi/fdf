@@ -21,6 +21,9 @@
 # include <ft_printf.h>
 # include <mlx.h>
 # include <math.h>
+# include <string.h>
+# include <errno.h>
+# include <stdio.h>
 
 # define WIN_WIDTH 1200
 # define WIN_HEIGHT 600
@@ -63,17 +66,25 @@ typedef struct s_data {
 	void			*window;
 	void			*mlx;
 	t_cartesian_map	*map;
+	char			*map_name;
 }	t_data;
 
-t_list			**get_map_array(char *filename);
+typedef struct s_map_array {
+	t_list	**map;
+	int		rows;
+	int		cols;
+}	t_map_array;
+
+t_map_array		*get_map_array(char *filename);
 void			mlx_draw_line(t_data *data, t_point p1, t_point p2);
 t_point			*new_point(int x, int y, int color);
 void			del_point(t_point *point);
 void			isometric_projection(t_point *point, int height);
-t_cartesian_map	*new_cartesian_map(t_list *row, int scale);
+t_cartesian_map	*new_cartesian_map(t_list **row, int scale);
 int 			mlx_handle_key_press(int keycode, void *my_data);
 int 			mlx_close_window(void *my_data);
-int				mlx_render_map(void *my_data);
+int				mlx_render_frame(void *my_data);
 void			register_hooks(t_data *data);
+int				mlx_draw_map(t_data *data);
 
 #endif
