@@ -30,7 +30,7 @@ static t_map_item	*new_map_item(char *item_info)
 	return (item);
 }
 
-static t_list	**new_map_columns(char *line)
+static t_list	**new_map_columns(char *line, int *cols)
 {
 	t_list		**map_columns;
 	char		**columns;
@@ -48,42 +48,50 @@ static t_list	**new_map_columns(char *line)
 		free(columns[j]);
 		j++;
 	}
+	*cols = j;
 	free(columns);
 	return (map_columns);
 }
 
-static t_list	**map_parser(int fd)
+static t_list	**map_parser(int fd, int *rows, int *cols)
 {
 	t_list		**map_array;
 	t_list		**map_columns;
 	char		*line;
+	int			i;
 
 	map_array = malloc(sizeof(t_list **));
 	if (!map_array)
 		return (NULL);
 	*map_array = NULL;
+	i = 0;
 	line = get_next_line(fd);
 	while (line)
 	{
-		map_columns = new_map_columns(line);
+		map_columns = new_map_columns(line, cols);
 		ft_lstadd_back(map_array, ft_lstnew(map_columns));
 		free(line);
 		line = get_next_line(fd);
+		i++;
 	}
+	*rows = i;
 	return (map_array);
 }
 
-t_list	**get_map_array(char *filename)
+t_map_array	*get_map_array(char *filename)
 {
-	static t_list	**map_array;
-	int				fd;
+	static t_map_array	*map_array;
+	int					fd;
 
 	if (!map_array)
 	{
 		fd = open(filename, O_RDONLY);
 		if (fd == -1)
 			return (NULL);
-		map_array = map_parser(fd);
+		map_array = malloc(sizeof(t_map_array));
+		map_array->rows = 0;
+		map_array->cols = 0;
+		map_array->map = map_parser(fd, &map_array->rows, &map_array->cols);
 		close(fd);
 	}
 	return (map_array);
