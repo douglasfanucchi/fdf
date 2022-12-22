@@ -99,7 +99,7 @@ static void	move_map_to_center(t_cartesian_map *map)
 	}
 }
 
-t_cartesian_map	*new_cartesian_map(t_list *row, int scale)
+t_cartesian_map	*new_cartesian_map(t_list **row, int scale)
 {
 	t_cartesian_map	*cartesian_map;
 
@@ -111,7 +111,7 @@ t_cartesian_map	*new_cartesian_map(t_list *row, int scale)
 	cartesian_map->y_min = 0;
 	cartesian_map->y_max = 0;
 	cartesian_map->scale = scale;
-	cartesian_map->rows = get_cartesian_rows(row, cartesian_map);
+	cartesian_map->rows = get_cartesian_rows(*row, cartesian_map);
 	move_map_to_center(cartesian_map);
 	return (cartesian_map);
 }
