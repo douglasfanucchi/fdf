@@ -28,7 +28,7 @@ static void	mlx_destroy_cartesian_map(t_cartesian_map *map)
 static t_cartesian_map	*get_cartesian_map(char *map_name)
 {
 	t_map_array	*map_array;
-	int			scale;
+	double		scale;
 	int			cols_square;
 	int			rows_square;
 

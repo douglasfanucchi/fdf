@@ -47,7 +47,7 @@ typedef struct s_cartesian_map {
 	int		y_max;
 	int		width;
 	int		height;
-	int		scale;
+	double	scale;
 	t_list	**rows;
 }	t_cartesian_map;
 
@@ -80,7 +80,7 @@ void			mlx_draw_line(t_data *data, t_point p1, t_point p2);
 t_point			*new_point(int x, int y, int color);
 void			del_point(t_point *point);
 void			isometric_projection(t_point *point, int height);
-t_cartesian_map	*new_cartesian_map(t_list **row, int scale);
+t_cartesian_map	*new_cartesian_map(t_list **row, double scale);
 int 			mlx_handle_key_press(int keycode, void *my_data);
 int 			mlx_close_window(void *my_data);
 int				mlx_render_frame(void *my_data);

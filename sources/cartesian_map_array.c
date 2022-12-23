@@ -99,7 +99,7 @@ static void	move_map_to_center(t_cartesian_map *map)
 	}
 }
 
-t_cartesian_map	*new_cartesian_map(t_list **row, int scale)
+t_cartesian_map	*new_cartesian_map(t_list **row, double scale)
 {
 	t_cartesian_map	*cartesian_map;
 
