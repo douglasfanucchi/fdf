@@ -86,5 +86,6 @@ int 			mlx_close_window(void *my_data);
 int				mlx_render_frame(void *my_data);
 void			register_hooks(t_data *data);
 int				mlx_draw_map(t_data *data);
+void			mlx_destroy_map_array(t_list **rows);
 
 #endif

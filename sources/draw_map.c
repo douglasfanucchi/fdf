@@ -12,6 +12,19 @@
 
 #include <fdf.h>
 
+static void	del_columns(void *columns)
+{
+	ft_lstclear((t_list **)columns, free);
+}
+
+static void	mlx_destroy_cartesian_map(t_cartesian_map *map)
+{
+	if (!map)
+		return ;
+	ft_lstclear(map->rows, del_columns);
+	free(map);
+}
+
 static t_cartesian_map	*get_cartesian_map(char *map_name)
 {
 	t_map_array	*map_array;
@@ -72,5 +85,6 @@ int	mlx_draw_map(t_data *data)
 		mlx_draw_columns(data, col, down_col);
 		row = row->next;
 	}
+	mlx_destroy_cartesian_map(map);
 	return (0);
 }

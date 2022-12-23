@@ -14,11 +14,18 @@
 
 int	mlx_close_window(void *my_data)
 {
-	t_data	*data;
+	t_data		*data;
+	t_map_array	*map_array;
 
 	data = my_data;
+	map_array = get_map_array(data->map_name);
+	if (map_array)
+		mlx_destroy_map_array(map_array->map);
 	mlx_destroy_window(data->mlx, data->window);
 	mlx_loop_end(data->mlx);
+	mlx_destroy_display(data->mlx);
+	free(data->mlx);
+	free(map_array);
 	exit(0);
 }
 

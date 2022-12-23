@@ -1,29 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear.c                                      :+:      :+:    :+:   */
+/*   destroy_map.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dfanucch <dfanucch@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/18 21:38:03 by dfanucch          #+#    #+#             */
-/*   Updated: 2022/09/18 21:38:03 by dfanucch         ###   ########.fr       */
+/*   Created: 2022/12/22 22:27:50 by dfanucch          #+#    #+#             */
+/*   Updated: 2022/12/22 22:27:50 by dfanucch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <fdf.h>
 
-void	ft_lstclear(t_list **lst, void (*del)(void*))
+static void	mlx_free_map_array_item(void *content)
 {
-	t_list	*node;
-	t_list	*tmp;
+	t_map_item	*item;
 
-	node = *lst;
-	*lst = NULL;
-	while (node != NULL)
-	{
-		tmp = node->next;
-		ft_lstdelone(node, del);
-		node = tmp;
-	}
-	free(lst);
+	item = content;
+	free(item->color);
+	free(item);
+}
+
+static void	del_columns(void *content)
+{
+	t_list	**columns;
+
+	columns = content;
+	ft_lstclear(columns, mlx_free_map_array_item);
+}
+
+void	mlx_destroy_map_array(t_list **rows)
+{
+	ft_lstclear(rows, del_columns);
 }
