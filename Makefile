@@ -1,5 +1,5 @@
 NAME=fdf
-CC=gcc
+CC=cc
 FILES=fdf map_array draw_lines transformation point cartesian_map_array hooks draw_map destroy_map
 SRC := $(addsuffix .c, $(FILES))
 SRC := $(addprefix sources/, $(SRC))

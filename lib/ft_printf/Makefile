@@ -1,6 +1,6 @@
 NAME=libftprintf.a
 TESTS=test.out
-CC=clang
+CC=cc
 CC_FLAGS=-Wall -Wextra -Werror -fPIE
 INCLUDES= -I ./includes -I libft
 LIBFT=./libft/libft.a
