@@ -37,7 +37,6 @@ int	ft_printf(const char *str, ...)
 			len = -1;
 	}
 	ft_lstclear(formats, del_data_formats);
-	free(formats);
 	va_end(ap);
 	return (len);
 }

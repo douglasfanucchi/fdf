@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dfanucch <dfanucch@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: dfanucch <dfanucch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 22:31:01 by dfanucch          #+#    #+#             */
-/*   Updated: 2022/10/07 00:30:19 by dfanucch         ###   ########.fr       */
+/*   Updated: 2022/12/21 14:30:44 by dfanucch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,5 +81,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 char	ft_isspace(char c);
 void	ft_putstr(char *str);
 char	*get_next_line(int fd);
+t_list	**ft_newlist(void);
+int		ft_atohex(char *hex);
 
 #endif

@@ -1,29 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear.c                                      :+:      :+:    :+:   */
+/*   mlx_destroy_display.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dfanucch <dfanucch@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: mg <mg@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/18 21:38:03 by dfanucch          #+#    #+#             */
-/*   Updated: 2022/09/18 21:38:03 by dfanucch         ###   ########.fr       */
+/*   Created: 2020/10/03 18:56:35 by mg                #+#    #+#             */
+/*   Updated: 2020/10/04 01:55:35 by mg               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "mlx_int.h"
 
-void	ft_lstclear(t_list **lst, void (*del)(void*))
+int	mlx_destroy_display(t_xvar *xvar)
 {
-	t_list	*node;
-	t_list	*tmp;
-
-	node = *lst;
-	*lst = NULL;
-	while (node != NULL)
-	{
-		tmp = node->next;
-		ft_lstdelone(node, del);
-		node = tmp;
-	}
-	free(lst);
+	XCloseDisplay(xvar->display);
 }

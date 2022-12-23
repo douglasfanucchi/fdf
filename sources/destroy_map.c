@@ -1,30 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.c                                              :+:      :+:    :+:   */
+/*   destroy_map.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dfanucch <dfanucch@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/22 11:46:36 by dfanucch          #+#    #+#             */
-/*   Updated: 2022/12/22 11:46:36 by dfanucch         ###   ########.fr       */
+/*   Created: 2022/12/22 22:27:50 by dfanucch          #+#    #+#             */
+/*   Updated: 2022/12/22 22:27:50 by dfanucch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fdf.h>
 
-int	main(int argc, char **argv)
+static void	mlx_free_map_array_item(void *content)
 {
-	t_data	data;
+	t_map_item	*item;
 
-	if (argc != 2)
-	{
-		ft_printf("Error: Invalid parameters.\n");
-		return (1);
-	}
-	data.mlx = mlx_init();
-	data.window = mlx_new_window(data.mlx, WIN_WIDTH, WIN_HEIGHT, "FDF");
-	data.map_name = argv[1];
-	register_hooks(&data);
-	mlx_loop(data.mlx);
-	return (0);
+	item = content;
+	free(item->color);
+	free(item);
+}
+
+static void	del_columns(void *content)
+{
+	t_list	**columns;
+
+	columns = content;
+	ft_lstclear(columns, mlx_free_map_array_item);
+}
+
+void	mlx_destroy_map_array(t_list **rows)
+{
+	ft_lstclear(rows, del_columns);
 }
