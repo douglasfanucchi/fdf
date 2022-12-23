@@ -22,7 +22,7 @@ static char	to_lower(char hex)
 
 int	ft_atohex(char *hex)
 {
-	const char 	*hex_digits;
+	const char	*hex_digits;
 	char		*current_digit;
 	int			value;
 	int			len;
